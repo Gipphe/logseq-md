@@ -1,4 +1,4 @@
-The following patch was taken from https://github.com/logseq/og/pull/50
+The following patch was taken from https://github.com/Gipphe/logseq-md/pull/50
 The changes to the lsplugin.*.js files were not included here
 because their content is only one minified line.
 Instead, we regenerate them from the lsplugin.*.ts files during the build.
@@ -1894,7 +1894,7 @@ index 0000000000..180cf48d28
 +})
 +
 +describe('pluginRootsFromPreferences', () => {
-+  const DOT = path.resolve('/home/u/.logseq-og')
++  const DOT = path.resolve('/home/u/.logseq-md')
 +
 +  test('always includes the dot-root tmp dir, where generated entries are written', () => {
 +    // A non-dot-root plugin whose package main is a .js file gets an entry

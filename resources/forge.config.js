@@ -3,15 +3,15 @@ const fs = require('fs')
 
 module.exports = {
   packagerConfig: {
-    name: 'Logseq-OG',
+    name: 'Logseq-MD',
     icon: './icons/logseq_big_sur.icns',
     buildVersion: "92",
-    appBundleId: "com.logseq.logseq-og",
+    appBundleId: "com.logseq.logseq-md",
     protocols: [
       {
-        "protocol": "logseq-og",
-        "name": "logseq-og",
-        "schemes": "logseq-og"
+        "protocol": "logseq-md",
+        "name": "logseq-md",
+        "schemes": "logseq-md"
       }
     ],
     osxSign: {
@@ -32,7 +32,7 @@ module.exports = {
     {
       'name': '@electron-forge/maker-squirrel',
       'config': {
-        'name': 'Logseq-OG',
+        'name': 'Logseq-MD',
         'setupIcon': './icons/logseq.ico',
         'loadingGif': './icons/installing.gif',
         'certificateFile': process.env.CODE_SIGN_CERTIFICATE_FILE,
@@ -43,11 +43,11 @@ module.exports = {
     {
       'name': '@electron-forge/maker-wix',
       'config': {
-        name: 'Logseq-OG',
+        name: 'Logseq-MD',
         icon: path.join(__dirname, './icons/logseq.ico'),
         language: 1033,
         manufacturer: 'Logseq',
-        appUserModelId: 'com.logseq.logseq-og',
+        appUserModelId: 'com.logseq.logseq-md',
         upgradeCode: "fefe66fc-d1dd-445e-aa76-12c593d13a4d",
         ui: {
           enabled: false,
@@ -76,7 +76,7 @@ module.exports = {
       config: {
         format: 'ULFO',
         icon: './icons/logseq_big_sur.icns',
-        name: 'Logseq-OG'
+        name: 'Logseq-MD'
       }
     },
     {
@@ -88,7 +88,7 @@ module.exports = {
       name: 'electron-forge-maker-appimage',
       platforms: ['linux'],
       config: {
-        mimeType: ["x-scheme-handler/logseq-og"]
+        mimeType: ["x-scheme-handler/logseq-md"]
       }
     }
   ],

@@ -37,7 +37,7 @@ class ShareViewController: UIViewController {
                     name: "payload",
                     value: queryPayload.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""),
             ]
-        var urlComps = URLComponents(string: "logseq-og://shared?")!
+        var urlComps = URLComponents(string: "logseq-md://shared?")!
         urlComps.queryItems = queryItems
         openURL(urlComps.url!)
     }

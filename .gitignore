@@ -64,3 +64,4 @@ deps/shui/.lsp-cache
 deps/shui/.clj-kondo
 deps/shui/shui-graph/logseq/bak
 .direnv/
+result
