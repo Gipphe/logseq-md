@@ -32,24 +32,24 @@
         "Finds block correctly"))
 
   (testing "Url links"
-    (is (= "https://github.com/logseq/og"
+    (is (= "https://github.com/Gipphe/logseq-md"
            (editor/extract-nearest-link-from-text
-            "https://github.com/logseq/og is #awesome :)" 0 editor/url-regex))
+            "https://github.com/Gipphe/logseq-md is #awesome :)" 0 editor/url-regex))
         "Finds url correctly")
 
-    (is (not= "https://github.com/logseq/og"
+    (is (not= "https://github.com/Gipphe/logseq-md"
               (editor/extract-nearest-link-from-text
-               "https://github.com/logseq/og is #awesome :)" 0))
+               "https://github.com/Gipphe/logseq-md is #awesome :)" 0))
         "Doesn't find url if regex not passed")
 
-    (is (= "https://github.com/logseq/og"
+    (is (= "https://github.com/Gipphe/logseq-md"
            (editor/extract-nearest-link-from-text
-            "[logseq](https://github.com/logseq/og) is #awesome :)" 0 editor/url-regex))
+            "[logseq](https://github.com/Gipphe/logseq-md) is #awesome :)" 0 editor/url-regex))
         "Finds url in markdown link correctly"))
 
-  (is (= "https://github.com/logseq/og"
+  (is (= "https://github.com/Gipphe/logseq-md"
          (editor/extract-nearest-link-from-text
-          "[[https://github.com/logseq/og][logseq]] is #awesome :)" 0 editor/url-regex))
+          "[[https://github.com/Gipphe/logseq-md][logseq]] is #awesome :)" 0 editor/url-regex))
       "Finds url in org link correctly"))
 
 (defn- set-marker

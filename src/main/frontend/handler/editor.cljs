@@ -3110,17 +3110,41 @@
 (defn editor-on-change!
   [block id search-timeout]
   (fn [e]
-    (if (= :block-search (state/sub :editor/action))
-      (let [timeout 300]
-        (when @search-timeout
-          (js/clearTimeout @search-timeout))
-        (reset! search-timeout
-                (js/setTimeout
-                 #(edit-box-on-change! e block id)
-                 timeout)))
-      (let [input (gdom/getElement id)]
-        (edit-box-on-change! e block id)
-        (util/scroll-editor-cursor input)))))
+    (let [action (state/get-editor-action)]
+      (cond
+        (= :block-search action)
+        (let [timeout 300]
+          (when @search-timeout
+            (js/clearTimeout @search-timeout))
+          (reset! search-timeout
+                  (js/setTimeout
+                   #(edit-box-on-change! e block id)
+                   timeout)))
+
+        (= :commands action)
+        (let [input (gdom/getElement id)]
+          (edit-box-on-change! e block id)
+          (util/scroll-editor-cursor input)
+          (if (= commands/command-trigger (second (re-find #"(\S+)\s+$" (.-value input))))
+            (state/clear-editor-action!)
+            (let [matched-commands (get-matched-commands input)]
+              (if (seq matched-commands)
+                (reset! commands/*matched-commands matched-commands)
+                (state/clear-editor-action!)))))
+
+        (= :block-commands action)
+        (let [input (gdom/getElement id)]
+          (edit-box-on-change! e block id)
+          (util/scroll-editor-cursor input)
+          (let [matched-block-commands (get-matched-block-commands input)]
+            (if (seq matched-block-commands)
+              (reset! commands/*matched-block-commands matched-block-commands)
+              (state/clear-editor-action!))))
+
+        :else
+        (let [input (gdom/getElement id)]
+          (edit-box-on-change! e block id)
+          (util/scroll-editor-cursor input))))))
 
 (defn- cut-blocks-and-clear-selections!
   [copy?]
